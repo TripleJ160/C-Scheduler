@@ -62,8 +62,6 @@ struct job * add_job(struct job *scheduler, char *job_name, char *user_name, int
 	struct job *cur, *prev, *new_node;
 
 	new_node = malloc(sizeof(struct job));
-	prev = malloc(sizeof(struct job));
-	cur = malloc(sizeof(struct job));
 
 	if(new_node == NULL) {
 		printf("malloc failed in sorted_insert\n");
@@ -98,9 +96,6 @@ struct job * add_job(struct job *scheduler, char *job_name, char *user_name, int
 	} else if (cur->priority == priority){ // adds if less than / equal to, and towards the end if multiple of same priority exists
 
 		struct job *cur2, *prev2;
-		cur2 = malloc(sizeof(struct job));
-		prev2 = malloc(sizeof(struct job));
-
 		// new prev and cur trackers to find end if there are multiple items of same priority
 		for(cur2 = cur, prev2=NULL; (cur2 != NULL) && (priority == cur2->priority) ;prev2=cur2, cur2=cur2->next) {
 		}
@@ -148,8 +143,6 @@ void list_user(struct job *scheduler, char *user_name) {
 	//makes new nodes and allocates mem
 	struct job *p;
 	struct job *q;
-	p = malloc(sizeof(struct job));
-	q = malloc(sizeof(struct job));
 	if (scheduler == NULL) {
 		return;
 	}
@@ -180,8 +173,7 @@ void list_jobs(struct job *scheduler, int num_cpus, int num_gpus, int memory, do
 	//makes new nodes and allocates mem
 	struct job *p;
 	struct job *q;
-	p = malloc(sizeof(struct job));
-	q = malloc(sizeof(struct job));
+
 	if (scheduler == NULL) {
 		return;
 	}
@@ -213,7 +205,7 @@ void list_jobs(struct job *scheduler, int num_cpus, int num_gpus, int memory, do
 void list_all_jobs(struct job *scheduler) {
 	//makes new nodes and allocates mem
 	struct job *p;
-	p = malloc(sizeof(struct job));
+	
 	if (scheduler == NULL) {
 		return;
 	}
@@ -230,7 +222,7 @@ void list_all_jobs(struct job *scheduler) {
 struct job * clear_jobs(struct job *scheduler) {
 	//assigns to temp p node to avoid dangling pointer and then releases from memory
 	struct job *p;
-	p = malloc(sizeof(struct job));
+	
     while (scheduler != NULL){
         p = scheduler;
         scheduler = scheduler->next;

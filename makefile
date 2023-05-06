@@ -1,6 +1,6 @@
 # names file project10_scheduler and compiles them with below dependencies
-project10_scheduler: job.o project10_scheduler.o
-	gcc -o project10_scheduler job.o project10_scheduler.o
+scheduler: job.o scheduler.o
+	gcc -o scheduler job.o scheduler.o
 
 # makes pre-compiled package with below dependencies
 
@@ -8,7 +8,7 @@ job.o: job.c job.h
 	gcc -c job.c
 
 # makes pre-compiled package with below dependencies
-project10_scheduler.o: project10_scheduler.c job.h 
-	gcc -c project10_scheduler.c
+scheduler.o: scheduler.c job.h 
+	gcc -c scheduler.c
 
 
